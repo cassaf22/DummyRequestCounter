@@ -134,3 +134,4 @@ docker compose down -v
 - The application runs correctly on **http://127.0.0.1:8000** and keeps track of visits even after restarts.  
 - Docker commands and configurations are documented for easy reuse and debugging.
  
+ ### CI/CD test run — trigger pipeline
