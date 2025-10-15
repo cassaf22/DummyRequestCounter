@@ -23,7 +23,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-          cache: "pip"
+          cache: pip
 
       - name: Install dependencies
         run: |
@@ -38,13 +38,16 @@ jobs:
         run: black --check app tests
 
       - name: Security (bandit)
-        run: bandit -q -r app || true   # remove "|| true" to make blocking
+        run: bandit -q -r app || true
 
       - name: Vulnerability scan (pip-audit)
-        run: pip-audit || true         # remove "|| true" to make blocking
+        run: pip-audit || true
 
       - name: Run unit tests
-        run: pytest -q --maxfail=1 --disable-warnings --cov=app --cov-report=term-missing
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+        run: |
+          pytest -q --maxfail=1 --disable-warnings --cov=app --cov-report=term-missing
 
   docker_build_test:
     name: Build & Smoke Test Container
