@@ -1,4 +1,19 @@
-fastapi
-uvicorn[standard]
+Flask==3.0.3
+redis==5.0.7
+
+
+# Web framework
+flask
 redis
-pydantic
+ 
+# Testing
+pytest
+pytest-cov
+ 
+# Linting & formatting
+flake8
+black
+ 
+# Security scanning
+bandit
+pip-audit
